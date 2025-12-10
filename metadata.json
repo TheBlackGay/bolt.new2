@@ -1,0 +1,5 @@
+{
+  "name": "Bolt Lite",
+  "description": "An AI-powered web development agent allowing users to prompt, generate, and view full-stack application code directly in the browser.",
+  "requestFramePermissions": []
+}

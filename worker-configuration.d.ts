@@ -1,0 +1,8 @@
+interface Env {
+  ANTHROPIC_API_KEY: string;
+  OPENAI_API_KEY?: string;
+  GOOGLE_GENERATIVE_AI_API_KEY?: string;
+  OPENAI_COMPATIBLE_API_KEY?: string;
+  OPENAI_COMPATIBLE_BASE_URL?: string;
+  OPENAI_COMPATIBLE_HEADERS?: string;
+}
