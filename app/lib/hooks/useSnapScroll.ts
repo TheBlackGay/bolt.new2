@@ -2,9 +2,9 @@ import { useRef, useCallback } from 'react';
 
 export function useSnapScroll() {
   const autoScrollRef = useRef(true);
-  const scrollNodeRef = useRef<HTMLDivElement>();
-  const onScrollRef = useRef<() => void>();
-  const observerRef = useRef<ResizeObserver>();
+  const scrollNodeRef = useRef<HTMLDivElement | undefined>(undefined);
+  const onScrollRef = useRef<(() => void) | undefined>(undefined);
+  const observerRef = useRef<ResizeObserver | undefined>(undefined);
 
   const messageRef = useCallback((node: HTMLDivElement | null) => {
     if (node) {
@@ -20,6 +20,7 @@ export function useSnapScroll() {
       });
 
       observer.observe(node);
+      observerRef.current = observer;
     } else {
       observerRef.current?.disconnect();
       observerRef.current = undefined;

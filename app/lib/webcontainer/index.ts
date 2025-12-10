@@ -5,21 +5,21 @@ interface WebContainerContext {
   loaded: boolean;
 }
 
-export const webcontainerContext: WebContainerContext = import.meta.hot?.data.webcontainerContext ?? {
+export const webcontainerContext: WebContainerContext = (import.meta as any).hot?.data.webcontainerContext ?? {
   loaded: false,
 };
 
-if (import.meta.hot) {
-  import.meta.hot.data.webcontainerContext = webcontainerContext;
+if ((import.meta as any).hot) {
+  (import.meta as any).hot.data.webcontainerContext = webcontainerContext;
 }
 
 export let webcontainer: Promise<WebContainer> = new Promise(() => {
   // noop for ssr
 });
 
-if (!import.meta.env.SSR) {
+if (!(import.meta as any).env.SSR) {
   webcontainer =
-    import.meta.hot?.data.webcontainer ??
+    (import.meta as any).hot?.data.webcontainer ??
     Promise.resolve()
       .then(() => {
         return WebContainer.boot({ workdirName: WORK_DIR_NAME });
@@ -29,7 +29,7 @@ if (!import.meta.env.SSR) {
         return webcontainer;
       });
 
-  if (import.meta.hot) {
-    import.meta.hot.data.webcontainer = webcontainer;
+  if ((import.meta as any).hot) {
+    (import.meta as any).hot.data.webcontainer = webcontainer;
   }
 }

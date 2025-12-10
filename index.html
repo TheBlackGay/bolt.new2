@@ -1,9 +1,87 @@
-<script type="importmap">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bolt</title>
+    <script type="importmap">
 {
   "imports": {
     "react": "https://aistudiocdn.com/react@^19.2.1",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "react/": "https://aistudiocdn.com/react@^19.2.1/"
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react-toastify": "https://aistudiocdn.com/react-toastify@^11.0.5",
+    "react-toastify/": "https://aistudiocdn.com/react-toastify@^11.0.5/",
+    "isbot": "https://aistudiocdn.com/isbot@^5.1.32",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25",
+    "diff": "https://aistudiocdn.com/diff@^8.0.2",
+    "node-fetch": "https://aistudiocdn.com/node-fetch@^3.3.2",
+    "ai/": "https://aistudiocdn.com/ai@^5.0.108/",
+    "ai": "https://aistudiocdn.com/ai@^5.0.108",
+    "date-fns": "https://aistudiocdn.com/date-fns@^4.1.0",
+    "@radix-ui/react-dialog": "https://aistudiocdn.com/@radix-ui/react-dialog@^1.1.15",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "shiki": "https://aistudiocdn.com/shiki@^3.19.0",
+    "react-resizable-panels": "https://aistudiocdn.com/react-resizable-panels@^3.0.6",
+    "@radix-ui/react-dropdown-menu": "https://aistudiocdn.com/@radix-ui/react-dropdown-menu@^2.1.16",
+    "vitest": "https://aistudiocdn.com/vitest@^4.0.15",
+    "@codemirror/lang-javascript": "https://aistudiocdn.com/@codemirror/lang-javascript@^6.2.4",
+    "@codemirror/language": "https://aistudiocdn.com/@codemirror/language@^6.11.3",
+    "@codemirror/view": "https://aistudiocdn.com/@codemirror/view@^6.39.2",
+    "vite": "https://aistudiocdn.com/vite@^7.2.7",
+    "@remix-run/cloudflare": "https://aistudiocdn.com/@remix-run/cloudflare@^2.17.2",
+    "remix-island": "https://aistudiocdn.com/remix-island@^0.2.0",
+    "@unocss/reset/": "https://aistudiocdn.com/@unocss/reset@^66.5.10/",
+    "@xterm/xterm": "https://aistudiocdn.com/@xterm/xterm@^5.5.0",
+    "@xterm/xterm/": "https://aistudiocdn.com/@xterm/xterm@^5.5.0/",
+    "rehype-raw": "https://aistudiocdn.com/rehype-raw@^7.0.0",
+    "remark-gfm": "https://aistudiocdn.com/remark-gfm@^4.0.1",
+    "@remix-run/react": "https://aistudiocdn.com/@remix-run/react@^2.17.2",
+    "rehype-sanitize": "https://aistudiocdn.com/rehype-sanitize@^6.0.0",
+    "unified": "https://aistudiocdn.com/unified@^11.0.5",
+    "@webcontainer/api": "https://aistudiocdn.com/@webcontainer/api@^1.6.1",
+    "remix-utils/": "https://aistudiocdn.com/remix-utils@^9.0.0/",
+    "nanostores": "https://aistudiocdn.com/nanostores@^1.1.0",
+    "unist-util-visit": "https://aistudiocdn.com/unist-util-visit@^5.0.0",
+    "@ai-sdk/openai": "https://aistudiocdn.com/@ai-sdk/openai@^2.0.80",
+    "vite-plugin-optimize-css-modules": "https://aistudiocdn.com/vite-plugin-optimize-css-modules@^1.2.0",
+    "@xterm/addon-fit": "https://aistudiocdn.com/@xterm/addon-fit@^0.10.0",
+    "@codemirror/lang-html": "https://aistudiocdn.com/@codemirror/lang-html@^6.4.11",
+    "@codemirror/lang-css": "https://aistudiocdn.com/@codemirror/lang-css@^6.3.1",
+    "@codemirror/lang-sass": "https://aistudiocdn.com/@codemirror/lang-sass@^6.0.2",
+    "@codemirror/lang-json": "https://aistudiocdn.com/@codemirror/lang-json@^6.0.2",
+    "@codemirror/lang-cpp": "https://aistudiocdn.com/@codemirror/lang-cpp@^6.0.3",
+    "@codemirror/commands": "https://aistudiocdn.com/@codemirror/commands@^6.10.0",
+    "@codemirror/lang-wast": "https://aistudiocdn.com/@codemirror/lang-wast@^6.0.2",
+    "istextorbinary": "https://aistudiocdn.com/istextorbinary@^9.5.0",
+    "@codemirror/autocomplete": "https://aistudiocdn.com/@codemirror/autocomplete@^6.20.0",
+    "@uiw/codemirror-theme-vscode": "https://aistudiocdn.com/@uiw/codemirror-theme-vscode@^4.25.3",
+    "@ai-sdk/openai-compatible": "https://aistudiocdn.com/@ai-sdk/openai-compatible@^1.0.28",
+    "fast-glob": "https://aistudiocdn.com/fast-glob@^3.3.3",
+    "vite-tsconfig-paths": "https://aistudiocdn.com/vite-tsconfig-paths@^5.1.4",
+    "@xterm/addon-web-links": "https://aistudiocdn.com/@xterm/addon-web-links@^0.11.0",
+    "@codemirror/state": "https://aistudiocdn.com/@codemirror/state@^6.5.2",
+    "@ai-sdk/anthropic": "https://aistudiocdn.com/@ai-sdk/anthropic@^2.0.54",
+    "unocss/": "https://aistudiocdn.com/unocss@^66.5.10/",
+    "unocss": "https://aistudiocdn.com/unocss@^66.5.10",
+    "@remix-run/dev": "https://aistudiocdn.com/@remix-run/dev@^2.17.2",
+    "vite-plugin-node-polyfills": "https://aistudiocdn.com/vite-plugin-node-polyfills@^0.24.0",
+    "@blitz/eslint-plugin/": "https://aistudiocdn.com/@blitz/eslint-plugin@^0.1.4/",
+    "@blitz/eslint-plugin": "https://aistudiocdn.com/@blitz/eslint-plugin@^0.1.4",
+    "@remix-run/cloudflare-pages": "https://aistudiocdn.com/@remix-run/cloudflare-pages@^2.17.2",
+    "@codemirror/search": "https://aistudiocdn.com/@codemirror/search@^6.5.11",
+    "wrangler": "https://aistudiocdn.com/wrangler@^4.53.0",
+    "@codemirror/lang-markdown": "https://aistudiocdn.com/@codemirror/lang-markdown@^6.5.0",
+    "@ai-sdk/google": "https://aistudiocdn.com/@ai-sdk/google@^2.0.45",
+    "@codemirror/lang-python": "https://aistudiocdn.com/@codemirror/lang-python@^6.2.1",
+    "@nanostores/react": "https://aistudiocdn.com/@nanostores/react@^1.0.0",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.10.1"
   }
 }
 </script>
+    <script type="module" src="/index.tsx"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

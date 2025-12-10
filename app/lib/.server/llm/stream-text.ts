@@ -1,9 +1,8 @@
-import { streamText as _streamText, convertToCoreMessages } from 'ai';
+import { streamText as _streamText, convertToCoreMessages, type CoreMessage } from 'ai';
 import { getLanguageModel } from './providers';
 import { validateModelConfig, getProviderConfig, type ModelConfig } from './model';
 import { MAX_TOKENS } from './constants';
 import { getSystemPrompt } from './prompts';
-import type { CoreMessage } from 'ai';
 
 interface ToolResult<Name extends string, Args, Result> {
   toolCallId: string;
@@ -56,10 +55,13 @@ export function streamText(
   );
 
   // Convert messages to AI SDK core format
-  const coreMessages: CoreMessage[] = convertToCoreMessages(messages);
+  const coreMessages: CoreMessage[] = messages.map(m => ({
+    role: m.role,
+    content: m.content
+  }));
 
   // Build streaming configuration
-  const streamConfig = {
+  const streamConfig: any = {
     model,
     system: getSystemPrompt(),
     maxTokens: config.maxTokens || MAX_TOKENS,
@@ -92,5 +94,5 @@ export async function generateText(
     system: getSystemPrompt(),
     prompt,
     maxTokens: config.maxTokens || MAX_TOKENS,
-  });
+  } as any);
 }

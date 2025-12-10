@@ -14,10 +14,10 @@ const highlighterOptions = {
 };
 
 const shellHighlighter: HighlighterGeneric<BundledLanguage, BundledTheme> =
-  import.meta.hot?.data.shellHighlighter ?? (await createHighlighter(highlighterOptions));
+  (import.meta as any).hot?.data.shellHighlighter ?? (await createHighlighter(highlighterOptions));
 
-if (import.meta.hot) {
-  import.meta.hot.data.shellHighlighter = shellHighlighter;
+if ((import.meta as any).hot) {
+  (import.meta as any).hot.data.shellHighlighter = shellHighlighter;
 }
 
 interface ArtifactProps {

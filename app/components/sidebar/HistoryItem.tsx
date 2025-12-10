@@ -12,7 +12,7 @@ export function HistoryItem({ item, onDelete }: HistoryItemProps) {
   const hoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout | undefined;
+    let timeout: ReturnType<typeof setTimeout> | undefined;
 
     function mouseEnter() {
       setHovering(true);

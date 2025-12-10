@@ -1,10 +1,10 @@
-import { format, isAfter, isThisWeek, isThisYear, isToday, isYesterday, subDays } from 'date-fns';
+import { format, isAfter, isThisWeek, isThisYear, isToday, isYesterday } from 'date-fns';
 import type { ChatHistoryItem } from '~/lib/persistence';
 
 type Bin = { category: string; items: ChatHistoryItem[] };
 
 export function binDates(_list: ChatHistoryItem[]) {
-  const list = _list.toSorted((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp));
+  const list = [..._list].sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp));
 
   const binLookup: Record<string, Bin> = {};
   const bins: Array<Bin> = [];
@@ -43,7 +43,8 @@ function dateCategory(date: Date) {
     return format(date, 'eeee');
   }
 
-  const thirtyDaysAgo = subDays(new Date(), 30);
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
   if (isAfter(date, thirtyDaysAgo)) {
     return 'Last 30 Days';

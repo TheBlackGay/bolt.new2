@@ -6,14 +6,14 @@ class ShortcutEventEmitter {
   #emitter = new EventTarget();
 
   dispatch(type: keyof Shortcuts) {
-    this.#emitter.dispatchEvent(new Event(type));
+    this.#emitter.dispatchEvent(new Event(type as string));
   }
 
   on(type: keyof Shortcuts, cb: VoidFunction) {
-    this.#emitter.addEventListener(type, cb);
+    this.#emitter.addEventListener(type as string, cb);
 
     return () => {
-      this.#emitter.removeEventListener(type, cb);
+      this.#emitter.removeEventListener(type as string, cb);
     };
   }
 }

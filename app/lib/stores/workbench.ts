@@ -29,20 +29,20 @@ export class WorkbenchStore {
   #editorStore = new EditorStore(this.#filesStore);
   #terminalStore = new TerminalStore(webcontainer);
 
-  artifacts: Artifacts = import.meta.hot?.data.artifacts ?? map({});
+  artifacts: Artifacts = (import.meta as any).hot?.data.artifacts ?? map({});
 
-  showWorkbench: WritableAtom<boolean> = import.meta.hot?.data.showWorkbench ?? atom(false);
-  currentView: WritableAtom<WorkbenchViewType> = import.meta.hot?.data.currentView ?? atom('code');
-  unsavedFiles: WritableAtom<Set<string>> = import.meta.hot?.data.unsavedFiles ?? atom(new Set<string>());
+  showWorkbench: WritableAtom<boolean> = (import.meta as any).hot?.data.showWorkbench ?? atom(false);
+  currentView: WritableAtom<WorkbenchViewType> = (import.meta as any).hot?.data.currentView ?? atom('code');
+  unsavedFiles: WritableAtom<Set<string>> = (import.meta as any).hot?.data.unsavedFiles ?? atom(new Set<string>());
   modifiedFiles = new Set<string>();
   artifactIdList: string[] = [];
 
   constructor() {
-    if (import.meta.hot) {
-      import.meta.hot.data.artifacts = this.artifacts;
-      import.meta.hot.data.unsavedFiles = this.unsavedFiles;
-      import.meta.hot.data.showWorkbench = this.showWorkbench;
-      import.meta.hot.data.currentView = this.currentView;
+    if ((import.meta as any).hot) {
+      (import.meta as any).hot.data.artifacts = this.artifacts;
+      (import.meta as any).hot.data.unsavedFiles = this.unsavedFiles;
+      (import.meta as any).hot.data.showWorkbench = this.showWorkbench;
+      (import.meta as any).hot.data.currentView = this.currentView;
     }
   }
 
@@ -215,12 +215,13 @@ export class WorkbenchStore {
     const artifacts = this.artifacts.get();
     
     for (const [messageId, artifact] of Object.entries(artifacts)) {
-      const actions = artifact.runner.actions.get();
+      const actions = (artifact as any).runner.actions.get();
       
       // Abort each action that is pending or running
       for (const [actionId, action] of Object.entries(actions)) {
-        if (action.status === 'pending' || action.status === 'running') {
-          action.abort();
+        const actionState = action as any;
+        if (actionState.status === 'pending' || actionState.status === 'running') {
+          actionState.abort();
         }
       }
     }

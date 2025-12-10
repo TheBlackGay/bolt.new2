@@ -1,7 +1,7 @@
 import { useLoaderData, useNavigate } from '@remix-run/react';
 import { useState, useEffect, useRef } from 'react';
 import { atom } from 'nanostores';
-import type { Message } from 'ai';
+import type { Message } from 'ai/react';
 import { toast } from 'react-toastify';
 import { workbenchStore } from '~/lib/stores/workbench';
 import { getMessages, getNextId, getUrlId, openDatabase, setMessages } from './db';
@@ -14,7 +14,7 @@ export interface ChatHistoryItem {
   timestamp: string;
 }
 
-const persistenceEnabled = !import.meta.env.VITE_DISABLE_PERSISTENCE;
+const persistenceEnabled = !(import.meta as any).env.VITE_DISABLE_PERSISTENCE;
 
 export const db = persistenceEnabled ? await openDatabase() : undefined;
 

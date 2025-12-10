@@ -270,7 +270,7 @@ function buildFileList(
 
   for (const [filePath, dirent] of Object.entries(files)) {
     const segments = filePath.split('/').filter((segment) => segment);
-    const fileName = segments.at(-1);
+    const fileName = segments[segments.length - 1];
 
     if (!fileName || isHiddenFile(filePath, fileName, hiddenFiles)) {
       continue;
@@ -290,7 +290,7 @@ function buildFileList(
         continue;
       }
 
-      if (i === segments.length - 1 && dirent?.type === 'file') {
+      if (i === segments.length - 1 && (dirent as any)?.type === 'file') {
         fileList.push({
           kind: 'file',
           id: fileList.length,

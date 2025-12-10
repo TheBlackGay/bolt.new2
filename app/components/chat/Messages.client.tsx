@@ -1,4 +1,4 @@
-import type { Message } from 'ai';
+import type { Message } from 'ai/react';
 import React from 'react';
 import { classNames } from '~/utils/classNames';
 import { AssistantMessage } from './AssistantMessage';

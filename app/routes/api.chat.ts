@@ -14,12 +14,12 @@ export async function action(args: ActionFunctionArgs) {
  * Implements streaming chat with AI models following AI SDK best practices
  */
 async function chatAction({ context, request }: ActionFunctionArgs) {
-  const { messages, modelConfig, apiKey, customEndpoint } = await request.json<{ 
+  const { messages, modelConfig, apiKey, customEndpoint } = await request.json() as { 
     messages: Messages;
     modelConfig?: Partial<ModelConfig>;
     apiKey?: string;
     customEndpoint?: { baseURL?: string; apiKey?: string };
-  }>();
+  };
 
   const stream = new SwitchableStream();
 
